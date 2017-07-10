@@ -1,0 +1,104 @@
+{% extends 'staff/base.html' %}
+
+{% load static %}
+
+{% block body_tag %}
+    <body class="feedbacks contact_us">
+{% endblock %}
+
+{% block header_tag %}
+    <header class="sticky white black-bg">
+{% endblock %}
+
+{% block header_tag_close %}
+    </header>
+{% endblock %}
+
+{% block page_content %}
+    <section id="membership-process">
+        <div class="container">
+            <section id="membership-process" class="upgrade">
+                <form accept-charset="UTF-8" class="new_feedback" data-type="html"
+                      id="new_feedback" method="post" mulitpart="true">
+                    <div style="margin:0;padding:0;display:inline">
+                        <input name="utf8" type="hidden" value="&#x2713;"/>
+                        <input name="authenticity_token" type="hidden"
+                            value="oU63L65bbAaJNOlTEmLkSuNWaRE1nbUmtCC1CulwdhM="/>
+                        {% csrf_token %}
+                    </div>
+                    <div class="wrapper">
+                        <div class="step1"><br><br>
+                            <h3>CONTACT US</h3>
+                            <div class="inputs">
+                                <div class="signup-errors">{{ form.non_field_errors }}</div>
+                                <div class="input-wrapper">
+{#                                    <input id="feedback_name" name="feedback[name]" placeholder="NAME"#}
+{#                                           required="required" type="text"/>#}
+                                    {{ form.name }}
+                                </div>
+                                <div class="input-wrapper">
+{#                                    <input id="feedback_email" name="feedback[email]" placeholder="EMAIL"#}
+{#                                           required="required" type="text"/>#}
+                                    {{ form.email }}
+                                </div>
+                                <div class="input-wrapper">
+{#                                    <input id="feedback_phone" name="feedback[phone]" placeholder="PHONE NUMBER"#}
+{#                                           required="required" type="text"/>#}
+                                    {{ form.phone_number }}
+                                </div>
+                                <div class="input-wrapper">
+
+                                    <div class="g-recaptcha " data-callback="validate_recaptcha"
+                                         data-sitekey="6LdvbCQUAAAAAB4KklGeqq7ijA7h1FGq2CWgCUHR"></div>
+                                    <noscript>
+                                        <div>
+                                            <div style="width: 302px; height: 422px; position: relative;">
+                                                <div style="width: 302px; height: 422px; position: absolute;">
+                                                    <iframe src="https://www.google.com/recaptcha/api/fallback?k=6LdvbCQUAAAAAB4KklGeqq7ijA7h1FGq2CWgCUHR"
+                                                            frameborder="0" scrolling="no" style="width: 302px; height:422px; border-style: none;">
+                                                    </iframe>
+                                                </div>
+                                            </div>
+                                            <div style="width: 300px; height: 60px; border-style: none;
+                bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px;
+                background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;">
+                                                <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1;
+                  margin: 10px 25px; padding: 0px; resize: none;" value=""></textarea>
+                                            </div>
+                                        </div>
+                                    </noscript>
+
+                                    <!-- <div class="recaptcha-error hidden">* Recaptcha is required </div> -->
+                                </div>
+                                <br><br><br><br><br><br><br><br>
+                                <div class="input-wrapper full">
+{#                                    <textarea cols="82" id="feedback_message" name="feedback[message]" placeholder="Your text here" required="required" rows="5"></textarea>#}
+                                    {{ form.text }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nav class="steps">
+                        <button type="submit" form="new_feedback" class="right">SEND<i class="icon-arrow-right"></i></button>
+                    </nav>
+                </form>
+            </section>
+        </div>
+    </section>
+{% endblock %}
+
+{% block side_menu %}
+    <ul>
+        <li class=""><a href="{% url 'home' %}"><p>HOME</p></a></li>
+        <li class=""><a href="{% url 'about' %}"><p>ABOUT US</p></a></li>
+        <li class=""><a href="{% url 'gallery' %}"><p>GALLERY</p></a></li>
+        <li class=""><a href="{% url 'meettheteam' %}"><p>MEET THE TEAM</p></a></li>
+        <li class=""><a href="schedule.html"><p>CLASS SCHEDULE</p></a></li>
+        <li class="active"><a href="{% url 'contact_us' %}"><p>CONTACT US</p></a></li>
+    </ul>
+{% endblock %}
+
+{% block body_tag_close %}
+    </body>
+{% endblock %}

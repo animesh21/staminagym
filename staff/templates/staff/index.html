@@ -1,0 +1,157 @@
+{% extends 'staff/base.html' %}
+
+{% load static %}
+
+{% block body_tag %}
+    <body class="pages show">
+{% endblock %}
+
+{% block header_tag %}
+    <header class="white">
+{% endblock %}
+
+{% block header_tag_close %}
+    </header>
+{% endblock %}
+
+{% block section_script %}
+    <script>
+        $(document).ready(function () {
+
+            if (localStorage['slideNum']) {
+                var mp4_videos = ["{% static 'staff/video.mp4' %}", "{% static 'staff/video.mp4' %}", "{% static 'staff/assets/clips/2_banner-2ad3147bc6443ea6a11d64a5a7044f71.mp4' %}", "{% static 'staff/assets/clips/3_banner-3a60827ff8c38b88b6d1c20251bb3bfe.mp4' %}"];
+                var ogv_videos = ["/assets/clips/0_banner-2b6520db3a1c7ecb61248301486d7624.ogv", "/assets/clips/1_banner-764ecdc2c5e06af66594aa1a1576b2cc.ogv", "/assets/clips/2_banner-9f2069aaac7d74c1bec1dba876a37722.ogv", "/assets/clips/3_banner-c94520de8105f56f9b5d3145d02d7b6d.ogv"];
+                var i = localStorage.slideNum;
+                console.log(i);
+                $(".background video").find(".mp4").attr("src", mp4_videos[i - 1]);
+                $(".background video").find(".ogv").attr("src", ogv_videos[i - 1]);
+                if (localStorage['slideNum'] <= 3) {
+                    i++;
+                    localStorage['slideNum'] = i;
+                }
+                else {
+                    localStorage['slideNum'] = 1;
+                }
+            }
+            else {
+                localStorage.setItem('slideNum', 1);
+            }
+
+        });
+    </script>
+{% endblock %}
+
+{% block page_content %}
+    <section id="homepage">
+        <div class="background">
+            <video height="240" autoplay loop>
+                <source class="mp4" src="{% static 'staff/video.mp4' %}" type="video/mp4">
+                <source class="ogv" src="/assets/clips/0_banner-2b6520db3a1c7ecb61248301486d7624.ogv" type="video/ogv">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <article>
+            <h1><img src="{% static 'staff/images/logo.png' %}"/></h1> <br>
+            <!--<p>DECIDE, COMMIT, SUCCEED.</p>-->
+            <!-- <p>To suffer, to throw former selves on the fire, to overcome and to change. For some of these individuals, fitness can mean the difference between life and death.</p> -->
+            <div class="buttons" style="text-align: center;">
+                <a href="gallery.html">
+                    <button class="red-btn">GALLERY</button>
+                </a>
+                <a href="#">
+                    <button class="white-outline-btn journey last">CLASS SCHEDULE</button>
+                </a>
+
+                <script>
+                    //Kill any Q2Answer cookies if they're not logged in
+                    document.cookie = 'PHPSESSID=; path=/; domain=.gymjones.com; expires=' + new Date(0).toUTCString();
+                    document.cookie = 'qa_session=; path=/; domain=.gymjones.com; expires=' + new Date(0).toUTCString();
+                    document.cookie = 'qa_key=; path=/; domain=.gymjones.com; expires=' + new Date(0).toUTCString();
+                </script>
+            </div>
+        </article>
+    </section>
+{% endblock %}
+
+{% block side_menu %}
+    <ul>
+        <li class="active"><a href="{% url 'home' %}"><p>HOME</p></a></li>
+        <li class=""><a href="{% url 'about' %}"><p>ABOUT US</p></a></li>
+        <li class=""><a href="{% url 'gallery' %}"><p>GALLERY</p></a></li>
+        <li class=""><a href="{% url 'meettheteam' %}"><p>MEET THE TEAM</p></a></li>
+        <li class=""><a href="schedule.html"><p>CLASS SCHEDULE</p></a></li>
+        <li class=""><a href="{% url 'contact_us' %}"><p>CONTACT US</p></a></li>
+    </ul>
+{% endblock %}
+
+{% block extra_content %}
+    <section id="aboutpage">
+    <div class="container-wide">
+        <section id="hero">
+            <div class="guy"></div>
+            <article>
+                <h2>STAMINA GYM</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc haec primum fortasse audientis servire
+                    debemus. Quis suae urbis conservatorem Codrum, quis Erechthei filias non maxime laudat? Quid de
+                    Platone aut de Democrito loquar? Non minor, inquit, voluptas percipitur ex vilissimis rebus quam ex
+                    pretiosissimis. Quid iudicant sensus? </p>
+            </article>
+        </section>
+
+
+        <section id="membershipspage">
+            <section id="hero">
+                <h1>GALLERY</h1>
+            </section>
+            <div class="container-wide">
+                <section id="membership-levels">
+                    <ul>
+                        <li class="js-scroll-in levels">
+
+                            <article>
+
+                            </article>
+                        </li>
+                        <li class="js-scroll-in levels">
+
+                        </li>
+                        <li class="js-scroll-in levels">
+
+
+                        </li>
+                        <li class="js-scroll-in levels">
+
+
+                        </li>
+                        <!-- keep this one hard coded for now until we figure out how to manage email only memberships -->
+                        <li class="js-scroll-in levels">
+                            <div class="overlay"></div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+
+        <section id="our-home">
+
+            <article>
+                <h3>ABOUT</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc haec primum fortasse audientis servire
+                    debemus. Quis suae urbis conservatorem Codrum, quis Erechthei filias non maxime laudat? Quid de
+                    Platone aut de Democrito loquar? Non minor, inquit, voluptas percipitur ex vilissimis rebus quam ex
+                    pretiosissimis. Quid iudicant sensus?</p>
+                <a href="contact.html">
+                    <button class="red-btn">CONTACT US</button>
+                </a></article>
+            <img src="assets/9_about/photo-grid-4306bef92cb5ec073c0d60cbe22fefed.png"/>
+
+        </section>
+    </div>
+</section>
+{% endblock %}
+
+{% block body_tag_close %}
+    </body>
+{% endblock %}

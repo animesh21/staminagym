@@ -1,0 +1,226 @@
+{% extends 'staff/base.html' %}
+
+{% load static %}
+
+{% block body_tag %}
+    <body class="memberships index">
+{% endblock %}
+
+{% block header_tag %}
+    <header class="sticky white">
+{% endblock %}
+
+{% block header_tag_close %}
+    </header>
+{% endblock %}
+
+{% block page_content %}
+    <section id="membership" class="modal modalMain">
+        <i class="icon-exit exit"></i>
+        <div class="container">
+            <section id="membership-section" class="upgrade">
+                <div class="overflow-wrapper">
+                    <div class="steps-wrapper">
+                        <form accept-charset="UTF-8" action="/users" class="new_user" data-remote="true"
+                              data-type="html" enctype="multipart/form-data" id="new_user" method="post"
+                              mulitpart="true">
+                            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"
+                                                                                  value="&#x2713;"/><input
+                                    name="authenticity_token" type="hidden"
+                                    value="oU63L65bbAaJNOlTEmLkSuNWaRE1nbUmtCC1CulwdhM="/></div>
+
+                            <div class="wrapper">
+                                <div class="step1">
+                                    <h3>CREATE AN<br> ACCOUNT</h3>
+                                    <div class="inputs">
+                                        <div class="signup-errors"></div>
+                                        <input id="user_first_name" name="user[first_name]" placeholder="FIRST NAME"
+                                               type="text"/>
+                                        <input id="user_last_name" name="user[last_name]" placeholder="LAST NAME"
+                                               type="text"/>
+                                        <input id="user_email" name="user[email]" placeholder="EMAIL" type="text"
+                                               value=""/>
+                                        <input id="user_phone" name="user[phone]" placeholder="PHONE NUMBER"
+                                               type="text"/>
+                                        <input id="user_password" name="user[password]"
+                                               placeholder="PASSWORD (8 character minimum)" type="password"/>
+                                        <input id="user_password_confirmation" name="user[password_confirmation]"
+                                               placeholder="RETYPE PASSWORD" type="password"/>
+                                        <input id="user_nickname" name="user[nickname]" placeholder="NICKNAME"
+                                               type="text"/>
+                                        <div class="dropdown white">
+                                            <p>SELECT SHIRT SIZE</p>
+                                            <input id="user_shirt_size" name="user[shirt_size]" type="hidden"/>
+                                            <ul class="dropdown-menu">
+                                                <li>S</li>
+                                                <li>M</li>
+                                                <li>L</li>
+                                                <li>XL</li>
+                                            </ul>
+                                        </div>
+                                        <h4>PUBLICLY VISIBLE?
+                                            <div class="checkbox white"><input id="publicly_visible"
+                                                                               name="publicly_visible" type="checkbox"
+                                                                               value="1"/></div>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wrapper">
+                                <div class="step2">
+                                    <h3>PROFILE SETUP</h3>
+                                    <div class="setup">
+                                        <div class="upload">
+                                            <div class="upload-image">
+                                                <input id="user_avatar" name="user[avatar]" type="file"/>
+                                                <div class="prompt">
+                                                    <img alt="Photo" id="upload-image-tag"
+                                                         src="{% static 'staff/assets/8_ProfileSetup/photo-5d24740a37c4c3fc55bfc441ddf6c05a.png' %}"/>
+                                                    <p>UPLOAD PHOTO</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="inputs">
+                                            <input id="user_age" name="user[age]" placeholder="AGE" type="text"/>
+                                            <input id="user_title" name="user[title]" placeholder="JOB TITLE"
+                                                   type="text" value="N/A"/>
+                                            <input id="user_height" name="user[height]" placeholder="HEIGHT"
+                                                   type="text"/>
+                                            <input id="user_weight" name="user[weight]" placeholder="WEIGHT"
+                                                   type="text"/>
+                                            <input id="user_favorite_movie" name="user[favorite_movie]"
+                                                   placeholder="FAVORITE MOVIE" type="text"/>
+                                            <input id="user_favorite_drink" name="user[favorite_drink]"
+                                                   placeholder="FAVORITE DRINK" type="text"/>
+
+                                            <div class="dropdown gray">
+                                                <p>ATHLETIC TYPE</p>
+                                                <input id="user_athletic_type" name="user[athletic_type]"
+                                                       type="hidden"/>
+                                                <ul class="dropdown-menu">
+                                                    <li>CYCLIST</li>
+                                                    <li>GPP ATHLETE</li>
+                                                    <li>FIGHTER</li>
+                                                    <li>ENDURANCE ATHLETE</li>
+                                                    <li>STRENGTH ATHLETE</li>
+                                                    <li>OTHER</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                        <form accept-charset="UTF-8" action="/memberships/subscribe_user_to_plan" data-remote="true"
+                              data-stripe-publishable-key="pk_live_FHVTbXYAWLpjNxnXZM3ZOtu7" id="payment-form"
+                              method="post">
+                            <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"
+                                                                                  value="&#x2713;"/><input
+                                    name="authenticity_token" type="hidden"
+                                    value="oU63L65bbAaJNOlTEmLkSuNWaRE1nbUmtCC1CulwdhM="/></div>
+                            <div class="wrapper">
+                                <div class="step3">
+                                    <h3>PAYMENT</h3>
+                                    <div class="setup">
+                                        <div class="inputs">
+          <span class='payment-errors'>
+          </span>
+                                            <input type="hidden" id="plan_id" name="plan_id"/>
+                                            <input type="text" data-stripe="name" placeholder="CARDHOLDERS NAME"/>
+                                            <input type="text" data-stripe="number" placeholder="CREDIT CARD NUMBER"
+                                                   class="half"/>
+                                            <input type="text" data-stripe="cvc" placeholder="CVC" class="half"/>
+                                            <input data-stripe="exp-month" placeholder="MM" class="half"/>
+                                            <input data-stripe="exp-year" placeholder="YY" class="half"/>
+                                            <p>I agree to the Terms and Conditions for this membership</p>
+                                            <div class="checkbox white">
+                                                <input type="checkbox"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="step4">
+                            <div class="inputs">
+                                receipt
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="steps">
+                    <button class="left"><i class="icon-arrow-left"></i> BACK</button>
+
+                    <div class="middle">
+                        <ul>
+                            <li class="active" data-step="1">SIGN UP</li>
+                            <li data-step="2">PROFILE</li>
+                            <li data-step="3">PAYMENT</li>
+                            <li data-step="4">RECEIPT</li>
+                        </ul>
+                    </div>
+                    <button class="right">NEXT <i class="icon-arrow-right"></i></button>
+                </nav>
+            </section>
+
+        </div>
+    </section>
+
+
+    <section id="membershipspage">
+        <section id="hero">
+            <h1>GALLERY</h1>
+        </section>
+        <div class="container-wide">
+            <section id="membership-levels">
+                <ul>
+                    <li class="js-scroll-in levels">
+
+                        <article>
+
+                            </a>
+                        </article>
+                    </li>
+                    <li class="js-scroll-in levels">
+
+                    </li>
+                    <li class="js-scroll-in levels">
+
+
+                    </li>
+                    <li class="js-scroll-in levels">
+
+
+                    </li>
+                    <!-- keep this one hard coded for now until we figure out how to manage email only memberships -->
+                    <li class="js-scroll-in levels">
+                        <div class="overlay"></div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </section>
+{% endblock %}
+
+{% block side_menu %}
+    <ul>
+        <li class=""><a href="{% url 'home' %}"><p>HOME</p></a></li>
+        <li class=""><a href="{% url 'about' %}"><p>ABOUT US</p></a></li>
+        <li class="active"><a href="{% url 'gallery' %}"><p>GALLERY</p></a></li>
+        <li class=""><a href="{% url 'meettheteam' %}"><p>MEET THE TEAM</p></a></li>
+        <li class=""><a href="schedule.html"><p>CLASS SCHEDULE</p></a></li>
+        <li class=""><a href="{% url 'contact_us' %}"><p>CONTACT US</p></a></li>
+    </ul>
+{% endblock %}
+
+{% block section_script %}
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+{% endblock %}
+
+{% block body_tag_close %}
+    </body>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'staff/base.html' %}
+
+{% load static %}
+
+{% block body_tag %}
+    <body class="pages show">
+{% endblock %}
+
+{% block header_tag %}
+    <header class="sticky white black-bg">
+{% endblock %}
+
+{% block header_tag_close %}
+    </header>
+{% endblock %}
+
+{% block page_content %}
+    <section id="aboutpage">
+        <div class="container-wide">
+            <section id="hero">
+                <div class="guy"></div>
+                <article>
+                    <h2>ABOUT US</h2>
+
+                    <p>Stamina Fitness Center offers a unique gym experience for both woman and men seeking a healthy
+                        lifestyle. Our trainers and fitness instructors are highly qualified and offer advice on how to
+                        reach your goals in an easy and fast manner. </p>
+                </article>
+            </section>
+
+            <section id="our-home">
+
+                <article>
+                    <h3>ABOUT</h3>
+                    <p>Stamina Fitness Center offers a unique gym experience for both woman and men seeking a healthy
+                        lifestyle. Our trainers and fitness instructors are highly qualified and offer advice on how to
+                        reach your goals in an easy and fast manner.</p>
+                    <a href="{% url 'contact_us' %}">
+                        <button class="red-btn">CONTACT US</button>
+                    </a></article>
+                <img src="{% static 'staff/assets/9_about/photo-grid-4306bef92cb5ec073c0d60cbe22fefed.png' %}"/>
+
+            </section>
+        </div>
+
+    </section>
+{% endblock %}
+
+{% block side_menu %}
+    <ul>
+        <li class=""><a href="{% url 'home' %}"><p>HOME</p></a></li>
+        <li class="active"><a href="{% url 'about' %}"><p>ABOUT US</p></a></li>
+        <li class=""><a href="{% url 'gallery' %}"><p>GALLERY</p></a></li>
+        <li class=""><a href="{% url 'meettheteam' %}"><p>MEET THE TEAM</p></a></li>
+        <li class=""><a href="schedule.html"><p>CLASS SCHEDULE</p></a></li>
+        <li class=""><a href="{% url 'contact_us' %}"><p>CONTACT US</p></a></li>
+    </ul>
+{% endblock %}
+
+{% block body_tag_close %}
+    </body>
+{% endblock %}

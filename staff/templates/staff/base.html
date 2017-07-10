@@ -1,0 +1,260 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Stamina Gym</title>
+
+    <!-- <script>
+     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+     ga('create', 'UA-2792526-1', 'auto');
+     ga('send', 'pageview');
+
+   </script> -->
+    <link href="{% static 'staff/assets/application-cdb5a7ca8000286ee994357734c003fe.css' %}" media="all" rel="stylesheet"/>
+    <script src="{% static 'staff/assets/application-472c522bd72b655144080da83a7a79cf.js' %}"></script>
+    <meta content="authenticity_token" name="csrf-param"/>
+    <meta content="oU63L65bbAaJNOlTEmLkSuNWaRE1nbUmtCC1CulwdhM=" name="csrf-token"/>
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0"/>
+    <meta name='description' content=''/>
+
+    <!--
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    -->
+    <script>
+        if (Spree === undefined) {
+            var Spree = {}
+        }
+        if (Spree.routes == undefined) {
+            Spree.routes = {}
+        }
+        Spree.routes.states_search = "/shop/api/states";
+        Spree.routes.apply_coupon_code = function (order_id) {
+            return "/shop/api/orders/" + order_id + "/apply_coupon_code"
+        };
+        Spree.routes.root = "https://gymjones.com/shop/"
+    </script>
+
+    <script>
+        Spree.routes.cart_link = "https://gymjones.com/shop/cart_link"
+    </script>
+
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+</head>
+
+{% block body_tag %}
+{% endblock %}
+
+<section class="pusher ">
+    {% block header_tag %}
+    {% endblock %}        <!--
+    <div class="error-message">
+
+        </div>
+    -->
+        <a href="{% url 'home' %}"><!--<div class="logo"></div> --></a>
+        <div class="links">
+            <ul>
+                <!-- <li class="phone-hide"><a href="about.html"><p>GALLERY</p></a></li>
+                 <li class="phone-hide"><a href="about.html"><p>ABOUT US</p></a></li>
+                 <li class="phone-hide"><a href="media/videos.html"><p>SHORT INTERVIEWS</p></a></li>
+                 <li class="phone-hide"><a href="media/videos.html"><p>CONTACT US</p></a></li>
+                 <li class="phone-hide"><a href="media/videos.html"><p>CLASS SCHEDULE</p></a></li>
+                 <li class="divider phone-hide"><a href="knowledge/articles.html"><p>CONTACT US</p></a></li>
+                 <li class="divider phone-hide"><a href="knowledge/articles.html"><p>CLASS SCHEDULE</p></a></li> -->
+                <!--<li class="signup phone-hide"><a href="memberships.html"><p>SIGN UP</p></a></li>-->
+{#                {{ logged_in | safe }}#}
+                {% if not logged_in %}
+                    <li class="login"><p> STAFF LOGIN </p></li>
+                {% else %}
+                    <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+                {% endif %}
+
+                <li class="menu"></li>
+            </ul>
+        </div>
+    {% block header_tag_close %}
+    {% endblock %}
+    {% block section_script %}
+    {% endblock %}
+
+    {% block page_content %}
+    {% endblock %}
+</section>
+
+
+<!-- Side Menu -->
+<section class="perspective ">
+    <nav id="side-menu">
+        <div class="scroll" onmouseover="document.body.style.overflow='hidden';"
+             onmouseout="document.body.style.overflow='auto';">
+            <i class="icon-exit exit"></i>
+            {% block side_menu %}
+{#            <ul>#}
+{#                <li class="{% if view_name == 'home' %} 'active' {% else %} '' {% endif %}"><a href="{% url 'home' %}"><p>HOME</p></a></li>#}
+{#                <li class="{% if view_name == 'about' %} 'active' {% else %} '' {% endif %}"><a href="{% url 'about' %}"><p>ABOUT US</p></a></li>#}
+{#                <li class="{% if view_name == 'gallery' %} 'active' {% endif %}"><a href="{% url 'gallery' %}"><p>GALLERY</p></a></li>#}
+{#                <li class="{% if view_name == 'meettheteam' %} 'active' {% endif %}"><a href="{% url 'meettheteam' %}"><p>MEET THE TEAM</p></a></li>#}
+{#                <li class="{% if view_name == 'schedule' %} 'active' {% endif %}"><a href="schedule.html"><p>CLASS SCHEDULE</p></a></li>#}
+{#                <li class="{% if view_name == 'contact' %} 'active' {% endif %}"><a href="{% url 'contact_us' %}"><p>CONTACT US</p></a></li>#}
+{#                <!--<li class=""><a href="instructors.html"><p>INSTRUCTORS</p></a></li>#}
+{#                <li class=""><a href="knowledge/articles.html"><p>KNOWLEDGE</p></a></li>#}
+{#                <li class=""><a href="seminars.html"><p>SEMINARS</p></a></li>#}
+{#                <li class=""><a href="today-in-the-gym.html"><p>TODAY IN THE GYM</p></a></li>#}
+{#                <li class=""><a href="daily-dose.html"><p>DAILY DOSE</p></a></li>#}
+{#                <li class=""><a href="shop.html"><p>SHOP</p></a></li>#}
+{#                <li class=""><a href="contact.html"><p>CONTACT US</p></a></li> -->#}
+            </ul>
+            {% endblock %}
+            <article>
+                <p>SOCIAL MEDIA</p>
+                <a target="_blank" href="https://www.facebook.com/"><i class="icon-facebook"></i></a>
+                <a target="_blank" href="https://twitter.com/"><i class="icon-twitter"></i></a>
+                <a target="_blank" href="https://instagram.com/"><i class="icon-instagram"></i></a>
+                <!--<a target="_blank" href="https://www.youtube.com/user/GymJonesTV/videos"><i class="icon-youtube"></i></a> -->
+            </article>
+        </div>
+    </nav>
+</section>
+
+<!-- Modals -->
+
+<section id="login-modal" class="modal modalMain">
+    <i class="icon-exit exit"></i>
+    <div class="container">
+
+        <section id="login">
+            <div class="inputs">
+                <h3>STAFF LOGIN</h3>
+                <form accept-charset="UTF-8"  id="sin_in_form" method="post">
+                    {% csrf_token %}
+{#                      <div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden"#}
+{#                                                                          value="&#x2713;"/><input#}
+{#                            name="authenticity_token" type="hidden"#}
+{#                            value="oU63L65bbAaJNOlTEmLkSuNWaRE1nbUmtCC1CulwdhM="/></div>#}
+                    <div class='login-errors'>{{ form.non_field_errors }}</div>
+                    {% for field in form %}
+                        <p>{{ field }}</p>
+                    {% endfor %}
+{#                    <input id="user_email" name="user[email]" placeholder="EMAIL" type="text"/>#}
+{#                    <input id="user_password" name="user[password]" placeholder="PASSWORD" type="password"/>#}
+                    <button type="submit" value="LOGIN" form="sin_in_form" class="red-btn">LOGIN</button>
+                </form>
+                <p><span><a href="#">FORGOT PASSWORD</a></span></p> <br>
+                <!--<p>Not a Member?<span><a href="memberships.html">Create an Account</a></span></p>-->
+            </div>
+        </section>
+
+    </div>
+</section>
+
+
+<section class="modalMain">
+
+    <i class="icon-exit exit"></i>
+
+    <section id="aboutToExpireMessage" class="message-modal">
+        <div class="container">
+            <h1>Your membership is about to expire</h1>
+            <p>Renew your membership to avoid losing premium content</p>
+            <div class="buttons">
+                <button class="red-btn">RENEW</button>
+                <button class="white-outline-btn">REMIND ME LATER</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="expiredMessage" class="message-modal">
+        <div class="container">
+            <h1>Your membership has expired</h1>
+            <p>Here's what you need to do to get back in the gym</p>
+            <button class="red-btn">RECONNECT</button>
+        </div>
+    </section>
+
+    <section id="cardExpiredMessage" class="message-modal">
+        <div class="container">
+            <h1>Hey Friend!</h1>
+            <p>It looks like your credit card information has expired.<br> Let's get that taken care of!</p>
+            <button class="red-btn">UPDATE INFO</button>
+        </div>
+    </section>
+
+    <section id="changePassword" class="message-modal">
+        <div class="container">
+            <h1 class="white-text">Change<br> Password</h1>
+            <div class="inputs">
+                <input type="password" placeholder="TYPE PASSWORD"/>
+                <input type="password" placeholder="RE-TYPE PASSWORD"/>
+                <button class="red-btn">SUBMIT</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="activatePlan" class="message-modal">
+        <div class="container">
+            <h1 class="white-text">MAKE PLAN ACTIVE?</h1>
+            <p>Current plan will no longer be active.</p>
+            <div class="buttons">
+                <button class="red-btn">YES</button>
+                <button class="white-outline-btn">CANCEL</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="completedTraining" class="message-modal">
+        <div class="container">
+            <h1 class="white-text">YOU'VE COMPLETED</h1>
+            <h1>MAN OF STEEL</h1>
+            <p>View saved training plans or browse all training plans that are available.</p>
+            <div class="buttons">
+                <button class="red-btn">MY TRAINING</button>
+                <button class="white-outline-btn">TRAINING PLANS</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Import modals specific to page here -->
+
+
+</section>
+
+{% block extra_content %}
+{% endblock %}
+
+{% if not footer_remove %}
+    <footer>
+        <div class="container">
+            <p>STAMINA GYM &copy; 2017 ALL RIGHTS RESERVED</p>
+            <ul class="social">
+                <li><a target="_blank" href="https://www.facebook.com"><i class="icon-facebook"></i></a></li>
+                <li><a target="_blank" href="https://twitter.com"><i class="icon-twitter"></i></a></li>
+                <li><a target="_blank" href="https://instagram.com"><i class="icon-instagram"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+{% endif %}
+
+
+<!--script type="text/javascript">
+  (function() {
+     var s = document.createElement("script");
+     s.type = "text/javascript";
+     s.async = true;
+     s.src = '//api.usersnap.com/load/'+
+         '67f433a4-ce9a-4cfa-aad1-66fbbc902fba.js';
+         var x = document.getElementsByTagName('script')[0];
+         x.parentNode.insertBefore(s, x);
+  })();
+</script-->
+{% block body_tag_close %}
+{% endblock %}
+</html>
