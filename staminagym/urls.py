@@ -17,6 +17,6 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^god-panel/', admin.site.urls),
+    url(r'^god-panel/?', admin.site.urls),
     url(r'', include('staff.urls'))
 ]

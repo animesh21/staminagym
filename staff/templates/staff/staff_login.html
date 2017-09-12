@@ -1,6 +1,9 @@
-{% extends 'staff/base.html' %}
-{% block content %}
-    <h2>Staff Login</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+</head>
+    <h2>Admin Login</h2>
     On success: {{ next }}
     <form method="post">
         {% csrf_token %}
@@ -13,4 +16,4 @@
         {% endfor %}
         <input type="submit" value="Login" />
     </form>
-{% endblock content %}
+</html>

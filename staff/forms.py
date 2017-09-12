@@ -1,9 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import User
 from .models import ContactUsModel
 
 
-class StaffLoginForm(AuthenticationForm):
+class LoginForm(AuthenticationForm):
     username = forms.CharField(
         max_length=254,
         widget=forms.TextInput(attrs={
@@ -52,3 +53,17 @@ class ContactUsForm(forms.ModelForm):
     class Meta:
         model = ContactUsModel
         fields = ['name', 'email', 'phone_number', 'text']
+
+
+class AddStaffForm(forms.ModelForm):
+
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'id': 'user_password',
+            'placeholder': 'PASSWORD'
+        })
+    )
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']

@@ -10,6 +10,8 @@ urlpatterns = [
     url(r'^gallery/?$', views.GalleryView.as_view(), name='gallery'),
     url(r'^meettheteam/?$', views.MeetTheTeamView.as_view(),  name='meettheteam'),
     url(r'^contact/?$', views.ContactUsView.as_view(), name='contact_us'),
+    url(r'^admin/?$', views.AdminLoginView.as_view(), name='admin_login'),
+    url(r'^add-staff/?$', views.AdminAddStaffView.as_view(), name='admin_view'),
     # wildcard url pattern for page not found
     url(r'^.*$', views.PageNotFoundView.as_view(), name='not_found')
 ]
